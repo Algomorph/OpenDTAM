@@ -35,7 +35,7 @@ For building `OpenDTAM`, here is a brief instruction on Ubuntu 12.04 LTS.
 
     ./a.out
 
-### Trouble Shooting
+### Troubleshooting
 
 You may get problems on the versions of the dependencies, if so you can resolve the problems by installing the required ones according to the messages output by `cmake`.
 

@@ -12,3 +12,12 @@ nbproject/
 *kate-swp*
 TOOLBOX_calib\ 2/
 testims/
+/bin/
+/lib/
+
+#CMake Generated Files
+CMakeFiles/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+CPackSourceConfig.cmake
