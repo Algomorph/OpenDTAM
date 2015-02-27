@@ -30,7 +30,7 @@ Optimizer::Optimizer(CostVolume cv) : cv(cv), cvStream(cv.cvStream)
 }
 
 void Optimizer::allocate(){
-    cout<<cv.rows<<", "<<cv.cols<<endl;
+    //cout<<cv.rows<<", "<<cv.cols<<endl;
     _a.create(cv.rows,cv.cols,CV_32FC1);assert(_a.isContinuous());
     _d.create(cv.rows,cv.cols,CV_32FC1);assert(_d.isContinuous());
     _qx.create(cv.rows,cv.cols,CV_32FC1);assert(_qx.isContinuous());

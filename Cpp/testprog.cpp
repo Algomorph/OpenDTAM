@@ -18,6 +18,8 @@
 #include "utils/utils.hpp"
 
 
+//#define TRAJ_PATH "../../"
+#define TRAJ_PATH ""
 //debug
 #include "tictoc.h"
 #include "Scheduler/Frame.hpp"
@@ -58,9 +60,8 @@ int App_main( int argc, char** argv )
     double reconstructionScale=5/5.;
 
     for(int i=0;i<=numImg;i++){
-        Mat tmp;
-        sprintf(filename,"../../Trajectory_30_seconds/scene_%03d.png",i);
-        convertAhandaPovRayToStandard("../../Trajectory_30_seconds",
+        sprintf(filename,TRAJ_PATH "Trajectory_30_seconds/scene_%03d.png",i);
+        convertAhandaPovRayToStandard(TRAJ_PATH "Trajectory_30_seconds",
                                       i,
                                       cameraMatrix,
                                       R,
@@ -76,7 +77,7 @@ int App_main( int argc, char** argv )
         Ts.push_back(T.clone());
 
     }
-    
+
     //Setup camera matrix
     double sx=reconstructionScale;
     double sy=reconstructionScale;

@@ -12,7 +12,7 @@
 
 #include "utils/utils.hpp"
 #include "utils/tinyMat.hpp"
-#include "graphics.hpp"
+//#include "graphics.hpp"
 #include <iostream>
 
 
@@ -37,7 +37,6 @@ void CostVolume::solveProjection(const cv::Mat& R, const cv::Mat& T) {
 //        cout<<"Augmented Camera Matrix:\n"<<projection<<endl;
 //    }
     projection=projection*P;
-    cout<<projection<<endl;
     
    // exit(0);
 }

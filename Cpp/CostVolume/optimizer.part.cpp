@@ -5,7 +5,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <cmath>
-#include "graphics.hpp"
+//#include "graphics.hpp"
 #include "set_affinity.h"
 #include "Cost.h"
 //relations: 
@@ -142,7 +142,7 @@ void Cost::cacheGValues(){
         gr[here]=-0.5*(g[right]+g[here]);
     }
 
-    pfShow("g",_g,0,Vec2d(0,1));
+    //pfShow("g",_g,0,Vec2d(0,1));
     
 }
 /*inline float Cost::aBasic(float* data,float l,float ds,float d){
@@ -249,8 +249,8 @@ static void* Cost_optimizeQD(void* object){
     set_affinity(2);
     while(cost->running){
         cost->optimizeQD();
-        if(allDie)
-                    return 0;
+        //if(allDie)
+        //            return 0;
     }
 }
 static void* Cost_optimizeA(void* object){
@@ -259,8 +259,8 @@ static void* Cost_optimizeA(void* object){
     set_affinity(3);
     while(cost->running){
         cost->optimizeA();
-        if(allDie)
-                    return 0;
+//        if(allDie)
+//                    return 0;
     }
 }
 
@@ -428,7 +428,7 @@ toc();
 //     pfShow("d",_d);
 //     pfShow("a",_a);
     assert(aptr==_a.data);
-    gcheck();
+    //gcheck();
     usleep(1);
     
 
@@ -446,7 +446,7 @@ void Cost::optimizeA(){
     }
     if (theta<thetaMin){//done optimizing!
         running=false;
-        gpause();
+        //gpause();
 //         initOptimization();
         stableDepth=_d.clone();//always choose more regularized version
         _qx=0.0;
@@ -471,8 +471,8 @@ void Cost::optimizeA(){
         float blank;
         a[point]=aBasic(data+point*l,l,ds,d[point],blank);
     }
-    pfShow("d",_d,0,Vec2d(0,layers));
-    pfShow("a",_a,0,Vec2d(0,layers));
+    //pfShow("d",_d,0,Vec2d(0,layers));
+    //pfShow("a",_a,0,Vec2d(0,layers));
 
 //     //debug: show the energies
 //     Mat acost(rows,cols,CV_32FC1);

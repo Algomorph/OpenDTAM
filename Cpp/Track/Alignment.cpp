@@ -10,7 +10,10 @@ using namespace std;
 #include "utils/utils.hpp"
 
 
-
+#ifdef __GNUC__
+//TODO: remove unused variables
+#pragma GCC diagnostic ignored "-Wunused-variable"
+#endif
 
 
 
@@ -225,7 +228,8 @@ static bool align_level_largedef_gray_forward(const Mat& T,//Total Mem cost ~185
     absdiff(T,I,fit);
     Mat mask=(fit<threshold)&(I>0);
     Mat err=T-I;
-    
+
+#ifdef DEBUGGING_VISUALS
     //debug
     {
 //         if (numParams==3){
@@ -242,6 +246,7 @@ static bool align_level_largedef_gray_forward(const Mat& T,//Total Mem cost ~185
 //         }
 //         }
     }
+#endif
     
    
     

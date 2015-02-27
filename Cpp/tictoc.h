@@ -4,6 +4,13 @@
 #include <iostream>
 #include <ctime>
 
+#ifdef __GNUC__
+//TODO: exclude profiling from main OpenDTAM library - it should be a separate utility
+#pragma GCC diagnostic ignored "-Wunused-function"
+//TODO: remove unused variables
+#pragma GCC diagnostic ignored "-Wunused-variable"
+#endif
+
 // Just a static variable that will be visible only within this file
 
 static struct timespec start_time;

@@ -1,6 +1,12 @@
 #ifndef OPENDTAM_HPP
 #define OPENDTAM_HPP
 
+
+#ifdef __GNUC__
+//TODO: tweak return types / add return statements where applicable to match signatures
+#pragma GCC diagnostic ignored "-Wreturn-type"
+#endif
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/gpu/gpu.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -18,7 +24,7 @@
 #include "CostVolume/Cost.h"
 #include "CostVolume/CostVolume.hpp"
 #include "Optimizer/Optimizer.hpp"
-#include "graphics.hpp"
+//#include "graphics.hpp"
 #include "set_affinity.h"
 #include "Track/Track.hpp"
 #include "utils/utils.hpp"
@@ -74,11 +80,11 @@ class OpenDTAM{
         rows(0),
         cols(0),
         cameraMatrix(cameraMatrix),
-        pyrLevels(0),
-        cameraMatrixPyr(),
         utrkLevel2DStart(0),utrkLevel2DEnd(0),
         utrkLevel3DStart(0),utrkLevel3DEnd(0),
         mtrkLevel3DStart(0),mtrkLevel3DEnd(0),
+		pyrLevels(0),
+		cameraMatrixPyr(),
         fs(),//the frame stream
         utrkq(),//frames needing fast tracking
         utrkd(),//frames that have been tracked at rough level
@@ -181,6 +187,7 @@ class OpenDTAM{
             mtrkd.push( newFp);//is fine tracked
             trkd. push( newFp);//is tracked
         }
+
     }
 
     FrameID addFrame(Mat image){
@@ -370,7 +377,7 @@ bool ucv(Ptr<Frame> _base,Ptr<Frame> _alt){
     do{ 
         cout<<"Theta: "<< optimizer.getTheta()<<endl;
         optimizer._a.download(ret);
-        pfShow("uA", ret, 0, cv::Vec2d(0, 32));
+        //pfShow("uA", ret, 0, cv::Vec2d(0, 32));
 
 //         optimizer.cacheGValues();
 //         optimizer._gy.download(ret);
@@ -384,7 +391,7 @@ bool ucv(Ptr<Frame> _base,Ptr<Frame> _alt){
 //             optimizer._gy.download(ret);
 //             pfShow("uGy function", ret, 0, cv::Vec2d(0, 1));
             optimizer._d.download(ret);
-            pfShow("uD function", ret, 0, cv::Vec2d(0, 32));
+            //pfShow("uD function", ret, 0, cv::Vec2d(0, 32));
         }
 //         cudaDeviceSynchronize();
         doneOptimizing=optimizer.optimizeA();

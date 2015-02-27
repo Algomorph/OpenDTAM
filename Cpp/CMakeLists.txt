@@ -39,6 +39,8 @@ include_directories("${BASEPATH}" ${CUDA_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 #---------------------CUDA FLAGS-----------------------------#
 set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-gencode arch=compute_35,code=sm_35;--use_fast_math ;--restrict; -lineinfo; -O0)
 
+message(STATUS ${DTAM_SOURCES})
+
 #----------------------DEFINE TARGETS------------------------#
 cuda_add_library(${PROJECT_NAME} SHARED ${DTAM_SOURCES} OpenDTAM.cpp)
 

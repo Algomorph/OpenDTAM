@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <opencv2/highgui/highgui.hpp>
 #include "tictoc.h"
-#include "graphics.hpp"
+//#include "graphics.hpp"
 // #define DTAM_COST_DEBUG
 
 

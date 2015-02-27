@@ -17,7 +17,6 @@ static Mat make4x4(const Mat& mat){
 }
 
 static Mat rodrigues(const Mat& p){
-    
     Mat tmp;
     Rodrigues(p,tmp);
     return tmp;
@@ -32,11 +31,8 @@ static void LieToRT(InputArray Lie, OutputArray _R, OutputArray _T){
     if(p.cols==1){
         p = p.t();
     }
-        
     rodrigues(p.colRange(Range(0,3))).copyTo(R);
     Mat(p.colRange(Range(3,6)).t()).copyTo(T);
-
-
 }
 
 

@@ -1,5 +1,14 @@
 #include "ImplMutex.hpp"
 
+
+#ifdef __GNUC__
+//TODO: tweak types/casts to make signed/unsigned comparisons match
+#pragma GCC diagnostic ignored "-Wsign-compare"
+//TODO: remove unused variables
+#pragma GCC diagnostic ignored "-Wunused-variable"
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
+#endif
+
 template <class T>
 class StallableSynchronizedQueue{
 public:

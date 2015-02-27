@@ -6,7 +6,7 @@
 
 //debug
 #include "tictoc.h"
-#include "graphics.hpp"
+//#include "graphics.hpp"
 
 //This reprojects a depthmap and image to another view. Pixels not predicted are set to the color of 0,0
 //
@@ -162,7 +162,7 @@ Mat reprojectCloud(const Mat comparison,const Mat _im, const Mat _depth, const M
     Mat pullback;
     Mat occluded(im.rows,im.cols,CV_8UC1);
      Mat depthPullback;
-     pfShow("zmap",zmap);
+     //pfShow("zmap",zmap);
 
      remap( zmap, depthPullback, xyLayers[0], xyLayers[1], CV_INTER_NN, BORDER_CONSTANT, Scalar(0,0, 0) );
 
@@ -174,7 +174,7 @@ Mat reprojectCloud(const Mat comparison,const Mat _im, const Mat _depth, const M
      zthr.convertTo(zthr,CV_32FC3,1/255.0);
     
     
-     pfShow("Occlusion",zdiff);
+     //pfShow("Occlusion",zdiff);
     
      remap( comparison, pullback, xyLayers[0], xyLayers[1], CV_INTER_NN, BORDER_CONSTANT, Scalar(0,0, 0) );
      Mat photoerr,pthr;
@@ -187,14 +187,14 @@ Mat reprojectCloud(const Mat comparison,const Mat _im, const Mat _depth, const M
 
  //     pullback.convertTo(pullback,CV_32FC3,1/255.0);
  //     assert(
-     pfShow("photo Error",photoerr);
+     //pfShow("photo Error",photoerr);
 
 
      Mat confidence;
      sqrt(pthr,confidence);
      confidence=Scalar(1,1,1)-confidence;
      pullback=pullback.mul(confidence).mul(zthr);
-     pfShow("Stabilized Projection",pullback,0,Vec2d(0,1));
+     //pfShow("Stabilized Projection",pullback,0,Vec2d(0,1));
 
     static Mat fwdp=im.clone();
     remap( im, fwdp, xmap, ymap, CV_INTER_NN, BORDER_CONSTANT,Scalar(0,0,0));
@@ -203,9 +203,9 @@ Mat reprojectCloud(const Mat comparison,const Mat _im, const Mat _depth, const M
     
     
 
-    pfShow("Forward Projection",fwdp,0,Vec2d(0,1));
+    //pfShow("Forward Projection",fwdp,0,Vec2d(0,1));
 //     absdiff(fwdp,comparison,zdiff);
-    pfShow("Actual Image",comparison);
+    //pfShow("Actual Image",comparison);
    
     
 
